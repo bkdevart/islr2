@@ -1,0 +1,5 @@
+library(ISLR2)
+head(Auto)
+getwd()
+write.csv(Auto, "auto.csv", row.names=F)
+write.csv(Boston, "boston.csv", row.names=F)
