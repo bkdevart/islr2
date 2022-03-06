@@ -4,14 +4,19 @@ library(ISLR2)
 
 # 3.6.2 - simple linear regression
 head(Boston)
+?Boston
 attach(Boston)
+# lm(y ∼ x, data), where y is the response, x is the 
+# predictor, and data is the data set in which these 
+# two variables are kept
 lm.fit = lm(medv ~ lstat)
 lm.fit
 summary(lm.fit)
 names(lm.fit)
 coef(lm.fit)
 confint(lm.fit)
-# producing confidence intervals and prediction intervals for medv for a given 
+# producing confidence intervals and prediction 
+# intervals for medv for a given 
 # value of lstat
 predict(lm.fit, data.frame(lstat=(c(5, 10, 15))), interval="confidence")
 predict(lm.fit, data.frame(lstat=(c(5, 10, 15))), interval="prediction")
@@ -36,3 +41,11 @@ plot(hatvalues(lm.fit))
 which.max(hatvalues(lm.fit))  # shows observation with largest leverage stat
 
 # 3.6.3 - multiple linear regression
+# The syntax lm(y ∼ x1 + x2 + x3) is used to fit a 
+# model with three predictors, x1, x2, and x3. The 
+# summary() function now outputs the regression 
+# coefficients for all the predictors.
+lm.fit = lm(medv ~ lstat + age, data=Boston)
+summary(lm.fit)
+
+
