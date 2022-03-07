@@ -47,5 +47,13 @@ which.max(hatvalues(lm.fit))  # shows observation with largest leverage stat
 # coefficients for all the predictors.
 lm.fit = lm(medv ~ lstat + age, data=Boston)
 summary(lm.fit)
+# regression using all predictors
+lm.fit = lm(medv ~ ., data=Boston)
+summary(lm.fit)
+# access individual elements of summary object
+# get r squared
+summary(lm.fit)$r.sq
+# get RSE
+summary(lm.fit)$sigma
 
 
