@@ -56,4 +56,6 @@ summary(lm.fit)$r.sq
 # get RSE
 summary(lm.fit)$sigma
 
-
+# compute variance inflation factors
+library(car)
+vif(lm.fit)
