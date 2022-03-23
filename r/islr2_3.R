@@ -59,3 +59,13 @@ summary(lm.fit)$sigma
 # compute variance inflation factors
 library(car)
 vif(lm.fit)
+
+# run a regression excluding age since it has high p-value
+lm.fit1 = lm(medv ~ . - age, data=Boston)
+summary(lm.fit1)
+# can also modify a model using update
+lm.fit1 = update(lm.fit, ~ . - age)
+summary(lm.fit1)
+
+# 3.6.4 - Interaction Terms
+
