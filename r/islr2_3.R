@@ -68,4 +68,23 @@ lm.fit1 = update(lm.fit, ~ . - age)
 summary(lm.fit1)
 
 # 3.6.4 - Interaction Terms
+summary(lm(medv ~ lstat * age, data=Boston))
 
+# 3.6.5 - Non-linear Transformations of the Predictors
+lm.fit2 = lm(medv ~ lstat + I(lstat^2))
+summary(lm.fit2)
+
+# use anova to quantify that quadratic is superior
+lm.fit = lm(medv ~ lstat)
+anova(lm.fit, lm.fit2)
+
+# when lstat2 term included inn model, little discernable pattern in residuals
+par(mfrow = c(2, 2))
+plot(lm.fit2)
+
+# create a fifth-order polynomial fit
+lm.fit5 = lm(medv ~ poly(lstat, 5))
+summary(lm.fit5)
+
+# Trying a log transformation instead of polynomial
+summary(lm(medv ~ log(rm), data=Boston))
